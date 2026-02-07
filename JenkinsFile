@@ -1,16 +1,18 @@
-pipeline { 
-    agent any 
-    stages { 
-        stage('Checkout Code') { 
-            steps { 
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout Code') {
+            steps {
                 git branch: 'main',
                     url: 'https://github.com/Prathi0611/calculator.git'
-            } 
-        } 
-        stage('Create File') { 
-            steps { 
-                bat 'echo This file is created by Jenkins > demo.txt'
-            } 
+            }
         }
-    } 
+
+        stage('Read File') {
+            steps {
+                bat 'type README.md'
+            }
+        }
+    }
 }
